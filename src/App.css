@@ -91,3 +91,146 @@ button {
   flex-direction: row;
   align-items: center;
 }
+
+/* Modal styles */
+/* The Modal (background) */
+.modal {
+	display: none;
+	/* Hidden by default */
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgba(53, 53, 53, 0.7);
+	/* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+	background-color: #222222;
+    color: #BBBABF;
+	padding: 20px;
+	border-radius: 5px;
+	width: 40%;
+	/* Could be more or less, depending on screen size */
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.create-new-task-block {
+    display: flex;
+    flex-direction: column;
+}
+
+#modal-heading {
+	margin-bottom: 10px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+	margin-bottom: 10px;
+}
+
+.form-row-label {
+    width: 15%;
+	font-size: 14px;
+	padding-bottom: 3px;
+}
+
+.form-row-input {
+    border-radius: 2px;
+    width: 100%;
+	background-color: #1D1D1D;
+	border: none;
+    color: #BBBABF;
+	height: 25px;
+	padding-left: 5px;
+	font-size: 13px;
+	font-family: 'primary-font';
+}
+
+.form-row-input:focus {
+	outline: none;
+}
+
+textarea {
+    resize: none;
+}
+
+select {
+	font-family: primary-font;
+	font-size: 13px;
+}
+
+#task-description {
+	height: 80px;
+}
+
+.form-btn-container {
+    display: flex;
+    flex-direction: row;
+    margin: 0.2rem;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.create-another-container {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	column-gap: 1px;
+	font-size: 12px;
+}
+
+.buttons  {
+    display: flex;
+    flex-direction: row;
+    margin: 0.2rem;
+}
+
+#save-button{
+    margin-top: 7px;
+    background-color: #5B35D6;
+    color: #BBBABF;
+    border-radius: 0.2rem;
+    padding: 5px 10px 5px 10px;
+    font-size: 15px;
+	border: none;
+	cursor: pointer;
+}
+
+#cancel-button {
+	background-color: #222222;
+    color: #BBBABF;
+	border: none;
+    font-size: 13px;
+    padding: 14px 10px 5px 10px;
+    border-radius: 0.2rem;
+	cursor: pointer;
+}
+
+/* The Close Button */
+/* .modal-close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+} */
