@@ -84,7 +84,7 @@ function App() {
         if(!input.createAnother.checked) {
             closeModal()
         }
-        setData(Data.loadData)
+        setData(Data.loadData())
     }
 
     function drag(event) {
@@ -98,11 +98,12 @@ function App() {
         var fromSectionId = ev.dataTransfer.getData("fromSectionId")
         if(ev.currentTarget.id === fromSectionId) return
         Data.replaceTask(targetId, fromSectionId, ev.currentTarget.id)
-        setData(Data.loadData)
+        setData(Data.loadData())
     }
 
     function deleteTask(taskId) {
-
+        Data.removeTask(taskId)
+        setData(Data.loadData())
     }
 
     function allowDrop(event) {
