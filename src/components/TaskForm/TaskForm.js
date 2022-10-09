@@ -26,12 +26,12 @@ export default function TaskForm(props) {
     }
 
     function closeModal() {
-        var modal = document.querySelector(".modal");
+        var modal = document.querySelector("#task-form");
         modal.style.display = "none";
     }
 
     return (
-        <div className="modal">
+        <div id="task-form" className="modal">
             <div className="modal-content">
                 <div className="create-new-task-block" id="create-new-task-block">
                     <strong id="modal-heading">Create task</strong>
