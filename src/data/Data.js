@@ -28,7 +28,7 @@ export default class Data {
     static insertTask(task) {
         let data = Data.loadData()
         data[`${task.status}`].push(task)
-        Data.setLocalStorage(data)
+        Data.setTasks(data)
     }
 
     static insertBoard(board) {
@@ -37,7 +37,7 @@ export default class Data {
         window.localStorage.setItem(Data.BOARDS, JSON.stringify(boards, null, 2))
     }
 
-    static setLocalStorage(data) {
+    static setTasks(data) {
         window.localStorage.setItem(Data.TASKS, JSON.stringify(data, null, 2))
     }
     
@@ -56,7 +56,7 @@ export default class Data {
         if(taskToReplace) {
             data[`${toSectionId}`].push(taskToReplace)
             data[`${FromSectionId}`] = newFromList
-            Data.setLocalStorage(data)
+            Data.setTasks(data)
         }
     }
 
@@ -66,7 +66,7 @@ export default class Data {
         sectionsToSearch.every(section => {
             return Data.removeTaskFrom(data, taskId, section)
         })
-        Data.setLocalStorage(data) //commit changes
+        Data.setTasks(data) //commit changes
     }
 
     static removeTaskFrom(data, taskId, section) {
