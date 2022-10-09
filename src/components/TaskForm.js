@@ -1,4 +1,4 @@
-export default function Keyboard(props) {
+export default function TaskForm(props) {
     
     function handleSaveClick() {
         let task = {}
