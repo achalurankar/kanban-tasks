@@ -16,12 +16,27 @@ export default class Data {
         return boards
     }
 
-    static loadData() {
+    static loadData(boardId) {
         let data = window.localStorage.getItem(Data.TASKS)
         //if data not present setup empty object
+        let filteredData = {todo: [], inprogress: [], review: [], done: []}
         if(!data) 
-            data = {todo: [], inprogress: [], review: [], done: []}
-        if(typeof(data) === 'string') data = JSON.parse(data)
+            data = filteredData
+        else {
+            data = JSON.parse(data)
+            if(boardId) {
+                for(let key of Object.keys(data)) {
+                    let tasks = []
+                    for(let task of data[key]) {
+                        if(task.boardId.toString() === boardId.toString()) {
+                            tasks.push(task)
+                        }
+                    }    
+                    filteredData[key] = tasks
+                }
+                data = filteredData
+            }
+        }
         return data
     }
 

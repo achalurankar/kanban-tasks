@@ -6,8 +6,8 @@ import TaskForm from './components/TaskForm/TaskForm';
 import Boards from './components/Boards/Boards';
 
 function App() {
-    const[data, setData] = useState(Data.loadData())
     const[boardId, setBoardId] = useState(0)
+    const[data, setData] = useState(Data.loadData(boardId))
     let kanbanSections = createSections()
 
     function createSections() {
@@ -53,8 +53,9 @@ function App() {
 
     function handleSave(task) {
         task.id = Data.getUniqueId()
+        task.boardId = boardId
         Data.insertTask(task)
-        setData(Data.loadData())
+        setData(Data.loadData(boardId))
     }
 
     function drag(event) {
@@ -68,21 +69,26 @@ function App() {
         var fromSectionId = ev.dataTransfer.getData("fromSectionId")
         if(ev.currentTarget.id === fromSectionId) return
         Data.replaceTask(targetId, fromSectionId, ev.currentTarget.id)
-        setData(Data.loadData())
+        setData(Data.loadData(boardId))
     }
 
     function deleteTask(taskId) {
         Data.removeTask(taskId)
-        setData(Data.loadData())
+        setData(Data.loadData(boardId))
     }
 
     function allowDrop(event) {
         event.preventDefault();
     }
 
+    function handleBoardClick(selectedBoardId) {
+        setBoardId(selectedBoardId)
+        setData(Data.loadData(selectedBoardId))
+    }
+
     return (
         <>
-            <Boards selectedBoardId={boardId} onBoardClick={setBoardId}/>
+            <Boards selectedBoardId={boardId} onBoardClick={(selectedBoardId) => handleBoardClick(selectedBoardId)}/>
             <div className='main-container'>
                 <div className='kanban-board'>
                     {kanbanSections}
