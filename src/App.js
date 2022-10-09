@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import Util from './util/Util';
 import Data from './data/Data';
-import Modal from './components/Modal';
+import TaskForm from './components/TaskForm';
 
 function App() {
     const[data, setData] = useState(Data.loadData())
@@ -85,7 +85,7 @@ function App() {
                     {kanbanSections}
                 </div>
             </div>
-            <Modal onSave={handleSave} />
+            <TaskForm onSave={handleSave} />
         </>
     );
 }
