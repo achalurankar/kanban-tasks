@@ -1,0 +1,33 @@
+.boards{
+    display: flex;
+    flex-direction: row;
+    column-gap: 3px;
+    background-color: #29282D;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px;
+    font-weight:600;
+    margin: 15px 60px;
+}
+.board {
+    display: flex;
+    padding: 4px 8px;
+    color: white;
+    cursor: pointer;
+    border: 1px solid;
+    border-color: #29282D;
+}
+.board.selected {
+    color: white;
+    cursor: default;
+    border: 1px solid;
+    border-color: #29282D;
+    border-bottom-color: white;
+}
+.new-board-btn {
+    display: flex;
+    padding: 4px 8px;
+    background-color:white;
+    border-radius: 5px;
+    cursor: pointer;
+}

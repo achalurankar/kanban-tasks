@@ -2,10 +2,12 @@ import { useState } from 'react';
 import './App.css';
 import Util from './util/Util';
 import Data from './data/Data';
-import TaskForm from './components/TaskForm';
+import TaskForm from './components/TaskForm/TaskForm';
+import Boards from './components/Boards/Boards';
 
 function App() {
     const[data, setData] = useState(Data.loadData())
+    const[boardId, setBoardId] = useState(0)
     let kanbanSections = createSections()
 
     function createSections() {
@@ -30,7 +32,7 @@ function App() {
                 <div id={section} key={section} className='kanban-block'>
                     <div className='block-header'>
                         <span id="heading">{label}</span>
-                        <button id='task-button' onClick={() => openModal()}>+</button>
+                        <button id='task-button' onClick={() => openTaskForm()}>+</button>
                     </div>
                     <div className='tasks' id={section} onDrop={(event) => drop(event)} onDragOver={(event) => allowDrop(event)}>
                         {taskBlocks}
@@ -42,9 +44,9 @@ function App() {
         return sections
     }
 
-    function openModal() {
+    function openTaskForm() {
         let input = { name : document.querySelector('#task-name'), description : document.querySelector('#task-description'), status : document.querySelector('#task-status'), createAnother : document.querySelector('#create-another')}
-        var modal = document.querySelector(".modal");
+        var modal = document.querySelector("#task-form");
         input.createAnother.checked = false
         modal.style.display = "block";
     }
@@ -80,6 +82,7 @@ function App() {
 
     return (
         <>
+            <Boards selectedBoardId={boardId} onBoardClick={setBoardId}/>
             <div className='main-container'>
                 <div className='kanban-board'>
                     {kanbanSections}

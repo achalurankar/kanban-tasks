@@ -2,8 +2,22 @@
     Data class containing utilty methods for handling data
 */
 export default class Data {
+
+    static TASKS = 'tasks'
+    static BOARDS = 'boards'
+
+    static loadBoards() {
+        let boards = window.localStorage.getItem(Data.BOARDS)
+        //if data not present setup empty object
+        if(!boards) {
+            boards = []
+        }
+        if(typeof(boards) === 'string') boards = JSON.parse(boards) 
+        return boards
+    }
+
     static loadData() {
-        let data = window.localStorage.getItem('appData')
+        let data = window.localStorage.getItem(Data.TASKS)
         //if data not present setup empty object
         if(!data) 
             data = {todo: [], inprogress: [], review: [], done: []}
@@ -17,8 +31,14 @@ export default class Data {
         Data.setLocalStorage(data)
     }
 
+    static insertBoard(board) {
+        let boards = Data.loadBoards()
+        boards.push(board)
+        window.localStorage.setItem(Data.BOARDS, JSON.stringify(boards, null, 2))
+    }
+
     static setLocalStorage(data) {
-        window.localStorage.setItem('appData', JSON.stringify(data, null, 2))
+        window.localStorage.setItem(Data.TASKS, JSON.stringify(data, null, 2))
     }
     
     static replaceTask(taskIdToReplace, FromSectionId, toSectionId) {
