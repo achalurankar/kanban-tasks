@@ -24,7 +24,7 @@ export default class Data {
             data = filteredData
         else {
             data = JSON.parse(data)
-            if(boardId) {
+            if(boardId && boardId.toString() !== '0') {
                 for(let key of Object.keys(data)) {
                     let tasks = []
                     for(let task of data[key]) {
