@@ -1,3 +1,5 @@
+import Util from "../util/Util"
+
 /*
     Data class containing utilty methods for handling data
 */
@@ -28,7 +30,7 @@ export default class Data {
                 for(let key of Object.keys(data)) {
                     let tasks = []
                     for(let task of data[key]) {
-                        if(task.boardId.toString() === boardId.toString()) {
+                        if(Util.isSame(task.boardId, boardId)) {
                             tasks.push(task)
                         }
                     }    
@@ -62,7 +64,7 @@ export default class Data {
         let taskToReplace
         let newFromList = []
         for(let task of data[`${FromSectionId}`]) {
-            if(task.id.toString() === taskIdToReplace) {
+            if(Util.isSame(task.id, taskIdToReplace)) {
                 taskToReplace = task
             } else {
                 newFromList.push(task)

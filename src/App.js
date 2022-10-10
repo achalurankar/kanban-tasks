@@ -67,7 +67,7 @@ function App() {
         ev.preventDefault()
         var targetId = ev.dataTransfer.getData("targetId")
         var fromSectionId = ev.dataTransfer.getData("fromSectionId")
-        if(ev.currentTarget.id === fromSectionId) return
+        if(Util.isSame(ev.currentTarget.id, fromSectionId)) return
         Data.replaceTask(targetId, fromSectionId, ev.currentTarget.id)
         setData(Data.loadData(boardId))
     }

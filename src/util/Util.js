@@ -7,4 +7,8 @@ export default class Util {
         "done" : "Done",
     }
 
+    static isSame(a, b) {
+        return a.toString() === b.toString()
+    }
+
 }

@@ -2,6 +2,7 @@ import './Boards.css';
 import Data from '../../data/Data';
 import BoardForm from '../BoardForm/BoardForm';
 import { useState } from 'react';
+import Util from '../../util/Util';
 
 export default function Boards(props) {
 
@@ -10,9 +11,9 @@ export default function Boards(props) {
     function getBoards() {
         let boardsMarkup = []
         let selectedBoardId = props.selectedBoardId
-        boardsMarkup.push(<div key="0" className={`board${selectedBoardId.toString() === '0' ? ' selected' : ''}`} id="0" onClick={(event) => handleBoardClick(event)}>All</div>)
+        boardsMarkup.push(<div key="0" className={`board${Util.isSame(selectedBoardId,'0') ? ' selected' : ''}`} id="0" onClick={(event) => handleBoardClick(event)}>All</div>)
         for(let board of boards) {
-            boardsMarkup.push(<div className={`board${selectedBoardId.toString() === board.id.toString() ? ' selected' : ''}`} key={board.id} id={board.id} onClick={(event) => handleBoardClick(event)}>{board.name}</div>)
+            boardsMarkup.push(<div className={`board${Util.isSame(selectedBoardId, board.id) ? ' selected' : ''}`} key={board.id} id={board.id} onClick={(event) => handleBoardClick(event)}>{board.name}</div>)
         }
         return boardsMarkup
     }
