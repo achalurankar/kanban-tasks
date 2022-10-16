@@ -19,7 +19,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
 }
 
 button {
@@ -45,7 +44,7 @@ button {
 }
 
 .tasks {
-  height: 500px;
+  min-height: 500px;
 }
 
 .task {
